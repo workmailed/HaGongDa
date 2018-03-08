@@ -140,7 +140,6 @@ void yaokong_fenxi()
 	if(adc_x != flagX || adc_y != flagY || adc_z != flagZ || Uart1_Send[2] != anjian_temp)
 	{
 		flagX = adc_x;
-		
 		flagY = adc_y;
 		flagZ = adc_z;
 		anjian_temp = Uart1_Send[2];
