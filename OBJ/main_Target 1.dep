@@ -1,5 +1,5 @@
 Dependencies for Project 'main', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5A782187)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32_FWLIB\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\MyCode\led -I ..\MyCode\Buzzer -I ..\MyCode\HX711 -I ..\MyCode\dam -I ..\MyCode\adc -I ..\MyCode\can -I ..\MyCode\WDG-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5A98C2FB)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32_FWLIB\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\MyCode\led -I ..\MyCode\Buzzer -I ..\MyCode\HX711 -I ..\MyCode\dam -I ..\MyCode\adc -I ..\MyCode\can -I ..\MyCode\WDG-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (stm32f10x.h)(0x565D1846)
 I (..\CORE\core_cm3.h)(0x565D1846)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
@@ -38,7 +38,7 @@ I (..\MyCode\dam\dma.h)(0x59BC9B4A)
 I (..\MyCode\adc\adc.h)(0x59BC8CB1)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x599ECD2E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
-I (..\MyCode\can\can.h)(0x5A4C380F)
+I (..\MyCode\can\can.h)(0x5A98C093)
 I (..\MyCode\WDG\wdg.h)(0x5051DADA)
 F (.\stm32f10x_it.c)(0x580493C9)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32_FWLIB\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\MyCode\led -I ..\MyCode\Buzzer -I ..\MyCode\HX711 -I ..\MyCode\dam -I ..\MyCode\adc -I ..\MyCode\can -I ..\MyCode\WDG-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_it.o --omf_browse ..\obj\stm32f10x_it.crf --depend ..\obj\stm32f10x_it.d)
 I (stm32f10x_it.h)(0x565D1846)
@@ -195,8 +195,8 @@ I (..\STM32_FWLIB\inc\stm32f10x_usart.h)(0x565D1846)
 I (..\STM32_FWLIB\inc\stm32f10x_wwdg.h)(0x565D1846)
 I (..\STM32_FWLIB\inc\misc.h)(0x565D1846)
 I (..\MyCode\dam\dma.h)(0x59BC9B4A)
-F (..\MyCode\can\can.c)(0x5A782122)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32_FWLIB\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\MyCode\led -I ..\MyCode\Buzzer -I ..\MyCode\HX711 -I ..\MyCode\dam -I ..\MyCode\adc -I ..\MyCode\can -I ..\MyCode\WDG-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\can.o --omf_browse ..\obj\can.crf --depend ..\obj\can.d)
-I (..\MyCode\can\can.h)(0x5A4C380F)
+F (..\MyCode\can\can.c)(0x5A98C093)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32_FWLIB\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\MyCode\led -I ..\MyCode\Buzzer -I ..\MyCode\HX711 -I ..\MyCode\dam -I ..\MyCode\adc -I ..\MyCode\can -I ..\MyCode\WDG-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\can.o --omf_browse ..\obj\can.crf --depend ..\obj\can.d)
+I (..\MyCode\can\can.h)(0x5A98C093)
 I (..\SYSTEM\sys\sys.h)(0x58048CD4)
 I (..\USER\stm32f10x.h)(0x565D1846)
 I (..\CORE\core_cm3.h)(0x565D1846)
@@ -558,7 +558,7 @@ I (..\STM32_FWLIB\inc\stm32f10x_tim.h)(0x565D1846)
 I (..\STM32_FWLIB\inc\stm32f10x_usart.h)(0x565D1846)
 I (..\STM32_FWLIB\inc\stm32f10x_wwdg.h)(0x565D1846)
 I (..\STM32_FWLIB\inc\misc.h)(0x565D1846)
-F (..\SYSTEM\usart\usart.c)(0x5A7819B6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32_FWLIB\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\MyCode\led -I ..\MyCode\Buzzer -I ..\MyCode\HX711 -I ..\MyCode\dam -I ..\MyCode\adc -I ..\MyCode\can -I ..\MyCode\WDG-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
+F (..\SYSTEM\usart\usart.c)(0x5A98C1B8)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32_FWLIB\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\MyCode\led -I ..\MyCode\Buzzer -I ..\MyCode\HX711 -I ..\MyCode\dam -I ..\MyCode\adc -I ..\MyCode\can -I ..\MyCode\WDG-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
 I (..\SYSTEM\usart\usart.h)(0x5A264A2F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (..\SYSTEM\sys\sys.h)(0x58048CD4)
@@ -593,4 +593,4 @@ I (..\STM32_FWLIB\inc\misc.h)(0x565D1846)
 I (..\MyCode\dam\dma.h)(0x59BC9B4A)
 I (..\MyCode\led\led.h)(0x5A780F8C)
 I (..\MyCode\adc\adc.h)(0x59BC8CB1)
-I (..\MyCode\can\can.h)(0x5A4C380F)
+I (..\MyCode\can\can.h)(0x5A98C093)
