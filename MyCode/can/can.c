@@ -100,13 +100,13 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 //msg:数据指针,最大为8个字节.
 //返回值:0,成功;
 //其他,失败;
-u8 Can_Send_Msg(u8* msg,u8 len)
+u8 Can_Send_Msg(int* msg,u8 len)
 {	
 	u8 mbox;
 	u16 i=0;
 	CanTxMsg TxMessage;
-	TxMessage.StdId=0x02;	// 标准标识符 
-	TxMessage.ExtId=0x12;			// 设置扩展标示符 
+	TxMessage.StdId=22;	// 标准标识符 
+	TxMessage.ExtId=0;			// 设置扩展标示符 
 	TxMessage.IDE=CAN_Id_Standard; 	// 标准帧
 	TxMessage.RTR=CAN_RTR_Data;		// 数据帧
 	TxMessage.DLC=len;				// 要发送的数据长度
@@ -132,14 +132,8 @@ u8 Can_Receive_Msg(u8 *buf)
     buf[i]=RxMessage.Data[i];  
 	return RxMessage.DLC;	
 }
-u8 canref[2]={0xff,0xff},cansend[4]={0xff,0xff,0xff,0x55};
+int cansend[4]={0,0,0,1};
 void can_send(void)
 {
-	if(flag.change_flag == 1)
-	{
-		cansend[0]=Uart1_Send[0];
-		cansend[1]=Uart1_Send[1];
-		cansend[2]=Uart1_Send[2];
-		Can_Send_Msg(cansend,4);
-	}
+	Can_Send_Msg(cansend,4);
 }

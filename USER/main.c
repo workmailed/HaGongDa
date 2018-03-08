@@ -32,7 +32,6 @@ int main(void)
     while(1)
     {			
 		yaokong_fenxi();
-		can_send();
         i++;
         if(i == 50)
         {

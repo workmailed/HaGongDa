@@ -129,94 +129,159 @@ void uart2_init(u32 bound)
 float adc_x, adc_y, adc_z;
 float flagX, flagY, flagZ;
 u16 anjian_temp,DianGang_temp;
+u8 jici_flag=0;
 void yaokong_fenxi()
 {
-    float max = 145.0, min = 105.0;
+    float max = 140.0, min = 110.0;
     adc_z = After_filter[0] * 3.3 / 4096 * 100; //Z
     adc_y = After_filter[1] * 3.3 / 4096 * 100; //Y
     adc_x = After_filter[2] * 3.3 / 4096 * 100; //X
-    Uart1_Send[2] = YaoGan_Key;
+    Uart1_Send[3] = YaoGan_Key;
 	
-	if(adc_x != flagX || adc_y != flagY || adc_z != flagZ || Uart1_Send[2] != anjian_temp)
+//	if((adc_x != flagX && (adc_x>max || adc_x<min)) || 
+//		(adc_y != flagY && (adc_y>max || adc_y<min)) || 
+//		(adc_z != flagZ && (adc_z>max || adc_z<min)) || 
+//		Uart1_Send[3] != anjian_temp)
+	if((adc_x>max || adc_x<min)|| (adc_y>max || adc_y<min) || (adc_z>max || adc_z<min) || cansend[3] != anjian_temp)
 	{
-		flagX = adc_x;//123
-		
+		flagX = adc_x;
 		flagY = adc_y;
 		flagZ = adc_z;
-		anjian_temp = Uart1_Send[2];
-		flag.change_flag = 1;
-		//×óÉÏ
-		if(flagX <min && flagY > max)
+		anjian_temp = cansend[3];
+		jici_flag = 0;
+		if(flagX > max)
 		{
-			 Uart1_Send[0] = 5;
-			 Uart1_Send[1] = (flagY-max)/(197.0-max)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//ÓÒÉÏ
-		else if(flagX >130 && flagY > max)
+			 cansend[0] = (flagX-max)/(223-max)*100;
+			 cansend[0] = (cansend[0]<=100) ? cansend[0]:100;			
+		}
+		else if(flagX < min)
 		{
-			 Uart1_Send[0] = 6;
-			 Uart1_Send[1] = (flagY-max)/(188.0-max)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//×óÏÂ
-		else if(flagX <min && flagY < min)
-		{
-			 Uart1_Send[0] = 7;
-			 Uart1_Send[1] = (min-flagY)/(min-55.0)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//ÓÒÏÂ
-		else if(flagX >max && flagY < min)
-		{
-			 Uart1_Send[0] = 8;
-			 Uart1_Send[1] = (min-flagY)/(min-55.0)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//×óÒÆ
-		else if(flagX < min )
-		{
-			 Uart1_Send[0] = 3;
-			 Uart1_Send[1] = (min-flagX)/(min-27.0)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		 }//ÓÒÒÆ
-		else if(flagX > max )
-		{
-			 Uart1_Send[0] = 4;
-			 Uart1_Send[1] = (flagX-max)/(223-max)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//Ç°½ø
-		else if(flagY > max)
-		{
-			 Uart1_Send[0] = 1;
-			 Uart1_Send[1] = (flagY-max)/(197-max)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//ºóÍË
+			 cansend[0] = (flagX -min)/(min-26.0)*100;
+			 cansend[0] = (cansend[0]>=-100) ? cansend[0]:-100;			
+		}
+		if(flagY > max)
+		{		
+			 cansend[1] = (flagY-max)/(219.0-max)*100;
+			 cansend[1] = (cansend[1]<=100) ? cansend[1]:100;				
+		}
 		else if(flagY < min)
 		{
-			 Uart1_Send[0] = 2;
-			 Uart1_Send[1] = (min-flagY)/(min-25)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//×óĞı
-		else if(flagZ < min)
+			 cansend[1] = (flagY-min)/(min-55.0)*100;
+			 cansend[1] = (cansend[1]>=-100) ? cansend[1]:-100;				
+		}		
+		if(flagZ < min)
 		{
-			 Uart1_Send[0] = 9;
-			 Uart1_Send[1] = (min-flagZ)/(min-25)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//ÓÒĞı
+			 cansend[2] = (flagZ-min)/(min-26)*100;
+			 cansend[2] = (cansend[2]>=-100) ? cansend[2]:-100;
+		}
 		else if(flagZ > max)
 		{
-			 Uart1_Send[0] = 10;
-			 Uart1_Send[1] = (flagZ-max)/(225-max)*100;
-			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
-		}//Í£Ö¹
-		else if((flagX >min && flagX < max)||(flagY >min && flagY < max)||(flagZ >min && flagZ < max))
-		{
-			 Uart1_Send[0] = 0;
-			 Uart1_Send[1]  = 0;
-		}
+			 cansend[2] = (flagZ-max)/(223-max)*100;
+			 cansend[2] = (cansend[2]<=100) ? cansend[2]:100;
+		}		
+		can_send();
 	}
 	else
 	{
-		flag.change_flag = 0;
-	}			
+		if(jici_flag==0)
+		{
+			cansend[0] = 0;
+			cansend[1]  = 0;
+			cansend[2]  = 0;	
+			can_send();			
+		}
+		jici_flag = 1;
+
+	}		
 }
+
+//void yaokong_fenxi()
+//{
+//    float max = 130.0, min = 120.0;
+//    adc_z = After_filter[0] * 3.3 / 4096 * 100; //Z
+//    adc_y = After_filter[1] * 3.3 / 4096 * 100; //Y
+//    adc_x = After_filter[2] * 3.3 / 4096 * 100; //X
+//    Uart1_Send[2] = YaoGan_Key;
+//	
+//	if(adc_x != flagX || adc_y != flagY || adc_z != flagZ || Uart1_Send[2] != anjian_temp)
+//	{
+//		flagX = adc_x;
+//		flagY = adc_y;
+//		flagZ = adc_z;
+//		anjian_temp = Uart1_Send[2];
+//		flag.change_flag = 1;
+//		//×óÉÏ
+//		if(flagX <min-10 && flagY > max)
+//		{
+//			 Uart1_Send[0] = 5;
+//			 Uart1_Send[1] = (flagY-max)/(197.0-max)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//ÓÒÉÏ
+//		else if(flagX >max && flagY > max)
+//		{
+//			 Uart1_Send[0] = 6;
+//			 Uart1_Send[1] = (flagY-max)/(188.0-max)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//×óÏÂ
+//		else if(flagX <min && flagY < min)
+//		{
+//			 Uart1_Send[0] = 7;
+//			 Uart1_Send[1] = (min-flagY)/(min-55.0)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//ÓÒÏÂ
+//		else if(flagX >max && flagY < min)
+//		{
+//			 Uart1_Send[0] = 8;
+//			 Uart1_Send[1] = (min-flagY)/(min-55.0)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//×óÒÆ
+//		else if(flagX < min )
+//		{
+//			 Uart1_Send[0] = 3;
+//			 Uart1_Send[1] = (min-flagX)/(min-27.0)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		 }//ÓÒÒÆ
+//		else if(flagX > max )
+//		{
+//			 Uart1_Send[0] = 4;
+//			 Uart1_Send[1] = (flagX-max)/(223-max)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//Ç°½ø
+//		else if(flagY > max)
+//		{
+//			 Uart1_Send[0] = 1;
+//			 Uart1_Send[1] = (flagY-max)/(197-max)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//ºóÍË
+//		else if(flagY < min)
+//		{
+//			 Uart1_Send[0] = 2;
+//			 Uart1_Send[1] = (min-flagY)/(min-25)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//×óĞı
+//		else if(flagZ < min)
+//		{
+//			 Uart1_Send[0] = 9;
+//			 Uart1_Send[1] = (min-flagZ)/(min-25)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//ÓÒĞı
+//		else if(flagZ > max)
+//		{
+//			 Uart1_Send[0] = 10;
+//			 Uart1_Send[1] = (flagZ-max)/(225-max)*100;
+//			 Uart1_Send[1] = (Uart1_Send[1]<=100) ? Uart1_Send[1]:100;
+//		}//Í£Ö¹
+//		else if((flagX >min && flagX < max)||(flagY >min && flagY < max)||(flagZ >min && flagZ < max))
+//		{
+//			 Uart1_Send[0] = 0;
+//			 Uart1_Send[1]  = 0;
+//		}
+//	}
+//	else
+//	{
+//		flag.change_flag = 0;
+//	}			
+//}
 void usart_send(void)
 {
     if(flag.change_flag == 1)
